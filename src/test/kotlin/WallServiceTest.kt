@@ -62,7 +62,7 @@ class WallServiceTest {
         assertTrue(result)
     }
 
-    @Test(expected = Exception::class)
+    @Test(expected = PostNotFoundException::class)
     fun createCommentError() {
         val service = WallService
         val comment = Comment(
@@ -75,8 +75,7 @@ class WallServiceTest {
             attachment = null
         )
 
-        val result = service.createComment(comment, 0)
-        assertThat(result, throw Exception("PostNotFoundException"))
+        service.createComment(comment, 10)
     }
 
 
@@ -123,7 +122,7 @@ class WallServiceTest {
         val result = servic.getNumberComment()
         assertEquals(result, 0)
     }
-    
+
     @Test
     fun getPost() {
         val service = WallService

@@ -17,7 +17,7 @@ object WallService {
             comments+=comment
             return comments.last()
         }else{
-            throw Exception("PostNotFoundException")
+            throw PostNotFoundException("ID поста не существует")
         }
     }
 
